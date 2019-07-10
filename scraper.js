@@ -24,7 +24,7 @@ const getCompanies = async () => {
     const newprice = cheerio('p.product-new-price', innerHtml).text();
 
     return {
-      title,
+      titlu,
       link,
       stoc,
       newprice
