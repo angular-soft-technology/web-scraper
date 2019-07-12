@@ -16,11 +16,12 @@
   },
   "homepage": "https://github.com/angular-soft-technology/web-scraper#readme",
   "devDependencies": {
-    "gulp": "^4.0.2",
+    "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
     "gulp-coffee": "^3.0.3",
     "gulp-compass": "^2.1.0",
     "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
     "gulp-util": "^3.0.8",
     "jquery": "^3.4.1",
     "mustache": "^3.0.1"
