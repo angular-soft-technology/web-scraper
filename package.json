@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/angular-soft-technology/web-scraper#readme",
   "devDependencies": {
+    "browser-sync": "^2.26.7",
     "gulp": "^3.7.0",
     "gulp-browserify": "^0.5.0",
     "gulp-compass": "^1.1.9",
