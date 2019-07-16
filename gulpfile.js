@@ -31,10 +31,6 @@ gulp.task('json', function() {
 });
 
 
-gulp.task('merge', function() {
-	gutil.log('Merge GULP!');
-});
-
 gulp.task('js', function() {
 	gulp.src(jsSources)
 		.pipe(concat('script.js'))
