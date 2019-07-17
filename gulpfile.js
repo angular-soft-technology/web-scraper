@@ -10,6 +10,7 @@ var gulp = require('gulp'),
 	imgMin = require('gulp-imagemin'),
 	pngCrush = require ('imagemin-pngcrush'),
 	concat = require('gulp-concat');
+global.jQuery = require("jquery");
 
 var env,
 	jsSources,
@@ -38,6 +39,9 @@ htmlSources = [outputDir + '*.html'];
 jsonSources = [outputDir + '*.json'];
 
 gulp.task('js', function() {
+	 externals: {
+  jquery: 'jQuery'
+}
 	gulp.src(jsSources)
 		.pipe(concat('script.js'))
 		.pipe(browserify())
