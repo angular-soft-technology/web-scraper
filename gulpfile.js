@@ -3,39 +3,46 @@ var gulp = require('gulp'),
 	browserify = require('gulp-browserify'),
 	connect = require('gulp-connect'),
 	compass = require('gulp-compass'),
+	gulpif = require('gulp-if'),
+	uglify = require('gulp-uglify'),
+	minifyHTML = require('gulp-minify-html'),
+	jsonMinify = require('gulp-jsonminify'),
+	imgMin = require('gulp-imagemin'),
+	pngCrush = require ('imagemin-pngcrush'),
 	concat = require('gulp-concat');
 
+var env,
+	jsSources,
+	htmlSources,
+	jsonSources,
+	outputDir,
+	sassStyle;
 
-var jsSources = ['componente/scripts/*.js'];
 
-var sassSources = ['componente/sass/style.scss'];
-var htmlSources = ['client/development/*.html'];
-var jsonSources = ['client/development/js/*.json'];
+env = process.env.NODE_ENV || 'development';
+
+if (env === 'development') {
+	outputDir = 'client/development/';
+	sassStyle = 'expanded';
+} else {
+	outputDir = 'client/production/';
+	sassStyle = 'compressed';
+}
 
 
-gulp.task('connect', function(){
-	connect.server ({
-		root: 'client/development/',
-		livereaload: true
-	});
-});
 
-gulp.task('html', function() {
-	gulp.src(htmlSources)
-	.pipe(connect.reload())
-});
+jsSources = ['componente/scripts/*.js'];
 
-gulp.task('json', function() {
-	gulp.src(jsonSources)
-	.pipe(connect.reload())
-});
-
+sassSources = ['componente/sass/style.scss'];
+htmlSources = [outputDir + '*.html'];
+jsonSources = [outputDir + '*.json'];
 
 gulp.task('js', function() {
 	gulp.src(jsSources)
 		.pipe(concat('script.js'))
 		.pipe(browserify())
-		.pipe(gulp.dest('client/development/js'))
+		.pipe(gulpif(env==='production', uglify()))
+		.pipe(gulp.dest(outputDir + 'js'))
 		.pipe(connect.reload())
 });
 
@@ -43,20 +50,56 @@ gulp.task('compass', function() {
 	gulp.src(sassSources)
 		.pipe(compass({
 			sass: 'componente/sass',
-			image: 'client/development/images',
-			style: 'expanded'
+			image: outputDir + 'images',
+			style: sassStyle
 		}))
 		.on('error', gutil.log)
-		.pipe(gulp.dest('client/development/css'))
+		.pipe(gulp.dest(outputDir + 'css'))
 		.pipe(connect.reload())
 });
 
 gulp.task('watch', function() {
 	gulp.watch(jsSources, ['js']);
 	gulp.watch('componente/sass/*.scss', ['compass']);
-	gulp.watch(htmlSources, ['html']);
-	gulp.watch(jsonSources, ['json']);
+	gulp.watch('client/development/*.html', ['html']);
+	gulp.watch('client/development/js/*.html', ['json']);
+	gulp.watch('client/development/images/**/*.*', ['images']);
 });
 
 
-gulp.task('default', ['html', 'json', 'js', 'compass', 'connect', 'watch']);
+gulp.task('connect', function(){
+	connect.server ({
+		root: outputDir,
+		livereaload: true
+	});
+});
+
+gulp.task('html', function() {
+	gulp.src('client/development/*.html')
+	.pipe(gulpif(env==='production', minifyHTML()))
+	.pipe(gulpif(env==='production', gulp.dest(outputDir)))
+	.pipe(connect.reload())
+});
+
+
+gulp.task('images', function () {
+	gulp.src('client/development/images/**/*.*')
+	.pipe(gulpif(env==='production', imgMin({
+		progressive: true,
+		svgoPlugins: [{ removeViewBox: false}],
+		use: [pngCrush]
+	})))
+	.pipe(gulpif(env==='production', gulp.dest(outputDir + 'images')))
+	.pipe(connect.reload())
+})
+
+
+gulp.task('json', function() {
+	gulp.src('client/development/js/*.json')
+	.pipe(gulpif(env==='production', jsonMinify()))
+	.pipe(gulpif(env==='production', gulp.dest('client/production/js')))
+	.pipe(connect.reload())
+});
+
+
+gulp.task('default', ['html', 'json', 'js', 'compass', 'connect', 'images', 'watch']);

@@ -14,16 +14,34 @@
  
   <section class="conferenceinfo">
     <div class="container">
-      <h1>Contemporary Art Conference</h1>
+      <h1>Introducere</h1>
       <h2 class="tagline"></h2>
  
-      <p>Join over 500 hundred of the most creative and brilliant minds of art colleges all around the world for five days of lectures by world-renowned art scholars and artists, and seven days and nights of gallery exhibits featuring the best in contemporary art, including painting, sculpture, and more, in the beautiful halls of Hotel Contempo in the heart of Seattle.</p>
+      <p><code>npm install</code>, sa intalati toate dependintele din <code>package.json</code></p>
+      <p>Proiectul este impartit in trei parti:<p>
+        <ul>
+          <li>Client - Pagina web - client website</li>
+          <li>Componente - SASS, JS, etc</li>
+          <li>Server - Scraperul</li>
+        </ul>
+      <p>Clientul este impartit in doua foldere:</p>
+      <ul>
+        <li>Development - aici este enviromentul unde se salveaza si testeaza codul compilat din <code>Componente</code></li>
+        <li>Production - tot codul css, js, html, imagini din <code>Development</code> compilat si minimizat. Aici nu umblam. Aici se salveaza last version gata de urcat pe server</li>
+      </ul>
+      <p>Avem doua variante de rulat <code>gulp</code>:</p>
+      <ul>
+        <li><code>NODE_ENV=development gulp</code> - il folosim doar pe acesta. Suntem pe mod development</li>
+        <li><code>NODE_ENV=production gulp</code> - il folosim doar cand exportam ultima varianta testata buna de urcat pe serverul live</li>
+      </ul>
+      <p>Va rog sa cititi <code>gulp.js</code> pentru mai multe detalii</p>
+
     </div>
   </section>
  
   <section class="featuredartists">
     <div class="container">
-      <h1>Featured Artists</h1>
+      <h1>Developeri</h1>
       <article class="artistlist rclick">
         <article class="item">
           <img src="images/artists/Barot_Bellingham_tn.jpg" alt="Photo of Barot Bellingham">
