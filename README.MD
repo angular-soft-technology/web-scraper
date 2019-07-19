@@ -7,7 +7,7 @@ npm install, sa intalati toate dependintele din package.json
 
 Proiectul este impartit in trei parti:
 
-Client - Pagina web - client website
+Client - Pagina web - client website <br />
 Componente - SASS, JS, etc
 Server - Scraperul
 Clientul este impartit in doua foldere:
