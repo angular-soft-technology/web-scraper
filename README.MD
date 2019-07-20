@@ -3,9 +3,10 @@
 Acest proiect este proprietatea Angular Soft Technology
 
 Introducere
-npm install, sa intalati toate dependintele din package.json
 
-Proiectul este impartit in trei parti:
+- npm install, sa intalati toate dependintele din package.json
+
+Proiectul este impartit astfel:
 
 - Client - Pagina web - client website
 - Componente - SASS, JS, etc
@@ -14,7 +15,7 @@ Proiectul este impartit in trei parti:
 
 Development - aici este enviromentul unde se salveaza si testeaza codul compilat din Componente
 
-Production - tot codul css, js, html, imagini din Development compilat si minimizat. Aici nu umblam. Aici se salveaza last version gata de urcat pe server
+Production - tot codul css, js, html, imagini din Development compilat si minimizat. Aici nu umblam. Aici se salveaza ultima versiune gata de urcat pe server
 
 Avem doua variante de rulat gulp:
 
