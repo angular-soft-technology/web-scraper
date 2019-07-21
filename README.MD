@@ -2,9 +2,14 @@
 
 Acest proiect este proprietatea Angular Soft Technology
 
-Introducere
+Mod de lucru:
 
-- npm install, sa intalati toate dependintele din package.json
+- creati un folder de lucru local
+- se deschide un terminal si se mută in folderul de lucru
+- se cloneaza proiectul de pe GitHub (cu git clone)
+- se ruleaza npm install pentru a instala toate dependintele din package.json
+- trebuie sa aveti instalat Ruby si Compass
+- folosind un terminal cu Ruby se rulază gem install compass pentru a instala utilitarul
 
 Proiectul este impartit astfel:
 
@@ -13,13 +18,15 @@ Proiectul este impartit astfel:
 - Server - Scraperul
 - Clientul este impartit in doua foldere:
 
-Development - aici este enviromentul unde se salveaza si testeaza codul compilat din Componente
+    - Development - aici este mediul de lucru unde se salveaza si testeaza codul compilat din Componente
 
-Production - tot codul css, js, html, imagini din Development compilat si minimizat. Aici nu umblam. Aici se salveaza ultima versiune gata de urcat pe server
+    - Production - tot codul (CSS, JS, HTML, imagini) din development compilat si minimizat. Aici nu umblam pentru că reține ultima versiune gata de urcat pe server
 
-Avem doua variante de rulat gulp:
+In momentul in care avem toate dependintele instalate pentru proiect, in terminal rulam gulp pentru a porni proiectul pe un server local.
+
+In acest sens, avem doua variante de rulat gulp:
 
 1. NODE_ENV=development gulp - il folosim doar pe acesta. Suntem pe mod development
 2. NODE_ENV=production gulp - il folosim doar cand exportam ultima varianta testata buna de urcat pe serverul live
 
-Va rog sa cititi gulp.js pentru mai multe detalii
+Nota: a se citi fisierul gulpfile.js pentru mai multe detalii legate de task-urile create
