@@ -9,7 +9,8 @@ var gulp = require('gulp'),
 	jsonMinify = require('gulp-jsonminify'),
 	imgMin = require('gulp-imagemin'),
 	pngCrush = require ('imagemin-pngcrush'),
-	concat = require('gulp-concat');
+	concat = require('gulp-concat'),
+	browserSync = require('browser-sync').create();
 global.jQuery = require("jquery");
 
 var env,
@@ -48,6 +49,7 @@ gulp.task('js', function() {
 		.pipe(gulpif(env==='production', uglify()))
 		.pipe(gulp.dest(outputDir + 'js'))
 		.pipe(connect.reload())
+		.pipe(browserSync.stream())
 });
 
 gulp.task('compass', function() {
@@ -60,6 +62,7 @@ gulp.task('compass', function() {
 		.on('error', gutil.log)
 		.pipe(gulp.dest(outputDir + 'css'))
 		.pipe(connect.reload())
+		.pipe(browserSync.stream())
 });
 
 gulp.task('watch', function() {
@@ -83,6 +86,7 @@ gulp.task('html', function() {
 	.pipe(gulpif(env==='production', minifyHTML()))
 	.pipe(gulpif(env==='production', gulp.dest(outputDir)))
 	.pipe(connect.reload())
+	.pipe(browserSync.stream())
 });
 
 
@@ -95,6 +99,7 @@ gulp.task('images', function () {
 	})))
 	.pipe(gulpif(env==='production', gulp.dest(outputDir + 'images')))
 	.pipe(connect.reload())
+	.pipe(browserSync.stream())
 })
 
 
@@ -103,7 +108,16 @@ gulp.task('json', function() {
 	.pipe(gulpif(env==='production', jsonMinify()))
 	.pipe(gulpif(env==='production', gulp.dest('client/production/js')))
 	.pipe(connect.reload())
+	.pipe(browserSync.stream())
 });
 
+gulp.task('serve', ['compass'], function(){
+	browserSync.init({
+		proxy: "localhost:8080"
+	});
 
-gulp.task('default', ['html', 'json', 'js', 'compass', 'connect', 'images', 'watch']);
+	gulp.watch('componente/sass/*.scss', ['compass']);
+})
+
+
+gulp.task('default', ['serve', 'html', 'json', 'js', 'compass', 'connect', 'images', 'watch']);
