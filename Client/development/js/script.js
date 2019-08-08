@@ -1,4 +1,21 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+// import React, {Component} from 'react';
+
+
+// class App extends Component {
+// 	render() {
+// 		return (
+// <div className="App"><h1>Aici merge React</h1></div>
+// 			);
+// 	}
+// }
+
+// import React from 'react';
+// import ReactDom from 'react-dom';
+
+
+// const element = <h1>Aici merge</h1>;
+// console.log(element);
 /*!
  * jQuery JavaScript Library v3.4.1
  * https://jquery.com/
@@ -10637,8 +10654,9 @@ var pixgrid = function() {
     }
 }();
 var rclick = function() {
+  console.log('trece prin script 2');
   var myNodes = document.querySelectorAll(".rclick");
- 
+
   for (var i=0; i<myNodes.length; i++) {
     myNodes[i].addEventListener("contextmenu", function(e) {
       e.preventDefault();
@@ -10672,6 +10690,7 @@ var rclick = function() {
     }, false); // click event
   }
 }(); //anonymous closure
+
 var $, fill;
 
 $ = require('jquery');

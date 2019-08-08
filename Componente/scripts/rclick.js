@@ -1,6 +1,6 @@
 var rclick = function() {
   var myNodes = document.querySelectorAll(".rclick");
- 
+
   for (var i=0; i<myNodes.length; i++) {
     myNodes[i].addEventListener("contextmenu", function(e) {
       e.preventDefault();
