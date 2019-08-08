@@ -44,7 +44,6 @@ gulp.task('js', function() {
   jquery: 'jQuery'
 }
 	gulp.src(jsSources)
-        .pipe(react())
 		.pipe(concat('script.js'))
 		.pipe(browserify())
 		.pipe(gulpif(env==='production', uglify()))
@@ -121,6 +120,4 @@ gulp.task('serve', ['compass'], function(){
 })
 
 
-
-
-gulp.task('default', ['serve', 'html', 'json', 'js', 'compass', 'connect', 'images' ,'watch']);
+gulp.task('default', ['serve', 'html', 'json', 'js', 'compass', 'connect', 'images', 'watch']);
