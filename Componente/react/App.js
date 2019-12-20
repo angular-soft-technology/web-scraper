@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
-
 import '../../Client/development/css/style.css';
+import ourlogo from '../../Client/development/images/misc/ralogo_monogram.png';
+import DeveloperTeam from './DeveloperTeam';
 
-const image = require ('../../Client/development/images/misc/ralogo_monogram.png');
-
-class App extends React.Component {
+class App extends Component {
 	render() { 
 		return (
-			<div className="App">test 2 <img src={image}/></div>
-			);
+			<div className="App-holder">
+				<div className="App">
+					<img src={ourlogo} />
+					<DeveloperTeam/>
+				</div>
+			</div>
+		);
 	}
 } 
 

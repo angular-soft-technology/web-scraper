@@ -18,6 +18,7 @@
   "homepage": "https://github.com/angular-soft-technology/web-scraper#readme",
   "devDependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/runtime": "^7.5.5",
