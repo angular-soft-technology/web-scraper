@@ -9,6 +9,7 @@ import Contact from './Contact';
 import Error from './Error';
 import Navigation from './Navigation';
 
+import ProductHolder from './ProductHolder';
 
 class App extends Component {
 	render() { 
@@ -25,6 +26,11 @@ class App extends Component {
 							<Route component={Error} />
 						</Switch>
 					</BrowserRouter>
+
+					<section className="product-overview">
+						<h1>Produse randate</h1>
+						<ProductHolder />
+					</section>
 				</div>
 			</div>
 		);

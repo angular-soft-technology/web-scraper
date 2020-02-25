@@ -53,3 +53,9 @@ section {
 .artgroup {
     @include clearfix;
 } //artgroup
+
+
+section.ProductHolder 
+{
+    padding: 20px 30px;
+}

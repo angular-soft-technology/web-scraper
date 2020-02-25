@@ -17,6 +17,9 @@ class ProductOverview extends Component{
                             Best price: {Math.min(this.props.link1[1], this.props.link2[1])}  
                         </p>
                     </div>
+                    <div className="product-description">
+                        <p>{this.props.desc}</p>
+                    </div>
                 </div>
                 
             </div>

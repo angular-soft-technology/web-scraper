@@ -6,7 +6,7 @@ class ProductHolder extends Component{
     render(){
         return(
             <section className="ProductHolder">
-               {produse.map(prod => <ProductOverview title={prod.titlu} image={prod.imagine} link1={prod.link1} link2={prod.link2}/>)}
+               {produse.map(prod => <ProductOverview title={prod.titlu} image={prod.imagine} desc={prod.descriere} link1={prod.link1} link2={prod.link2}/>)}
             </section>
         );
     }
